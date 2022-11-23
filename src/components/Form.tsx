@@ -1,19 +1,25 @@
 import { ComponentPropsWithoutRef } from 'react'
 import styled from 'styled-components'
+import { useFormContext, SubmitHandler } from 'react-hook-form'
 import { CharacterLength } from '~components/CharacterLength'
 import { CharactersSettings } from '~components/CharactersSettings'
 import { PasswordStrength } from '~components/PasswordStrength'
 import { SubmitButton } from '~components/SubmitButton'
+import { FormValues } from '~lib/formSchema'
 
-export type FormProps = ComponentPropsWithoutRef<'form'>
+export type FormProps = ComponentPropsWithoutRef<'form'> & {
+  onSubmit: SubmitHandler<FormValues>
+}
 
-export const Form = ({ ...props }: FormProps) => {
+export const Form = ({ onSubmit, ...props }: FormProps) => {
+  const { handleSubmit } = useFormContext<FormValues>()
+
   return (
-    <Wrapper {...props}>
+    <Wrapper onSubmit={handleSubmit(onSubmit)} {...props}>
       <CharacterLength />
       <CharactersSettings />
       <Group>
-        <PasswordStrength strength="strong" />
+        <PasswordStrength />
         <SubmitButton />
       </Group>
     </Wrapper>

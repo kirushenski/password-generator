@@ -17,8 +17,8 @@
     "prettier"
   ],
   "rules": {
-    // Next.JS <Link /> component is used without href attribute on <a />
     "jsx-a11y/anchor-is-valid": "off",
-    "import/order": "error"
+    "import/order": "error",
+    "@typescript-eslint/no-misused-promises": "off"
   }
 }

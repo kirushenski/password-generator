@@ -1,5 +1,7 @@
-import { ComponentPropsWithoutRef } from 'react'
+import { ComponentPropsWithoutRef, useMemo } from 'react'
 import styled from 'styled-components'
+import { useWatch } from 'react-hook-form'
+import { FormValues } from '~lib/formSchema'
 
 type PasswordStrength = 'weakest' | 'weak' | 'medium' | 'strong'
 
@@ -10,11 +12,15 @@ const passwordStrengthMap: Record<PasswordStrength, { label: string; color: stri
   strong: { label: 'Strong', color: 'var(--color-green)', count: 4 },
 }
 
-export type PasswordStrengthProps = ComponentPropsWithoutRef<'div'> & {
-  strength: PasswordStrength
-}
+export type PasswordStrengthProps = ComponentPropsWithoutRef<'div'>
 
-export const PasswordStrength = ({ strength, ...props }: PasswordStrengthProps) => {
+export const PasswordStrength = ({ ...props }: PasswordStrengthProps) => {
+  const { length, settings } = useWatch<FormValues>()
+  const strength = useMemo<PasswordStrength>(() => {
+    console.log('update strength', length, settings)
+    return 'strong'
+  }, [length, settings])
+
   const { label, color, count } = passwordStrengthMap[strength]
 
   return (

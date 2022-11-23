@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-misused-promises */
 import { ComponentPropsWithoutRef, useState } from 'react'
 import styled from 'styled-components'
 import IconCopy from '~icons/icon-copy.svg'

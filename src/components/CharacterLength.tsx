@@ -1,18 +1,30 @@
-import { ComponentPropsWithoutRef, useState } from 'react'
+import { ComponentPropsWithoutRef } from 'react'
 import styled from 'styled-components'
 import * as Slider from '@radix-ui/react-slider'
+import { useFormContext, useController } from 'react-hook-form'
+import { FormValues } from '~lib/formSchema'
 
 export type CharacterLengthProps = ComponentPropsWithoutRef<'div'>
 
 export const CharacterLength = ({ ...props }: CharacterLengthProps) => {
-  const [value, setValue] = useState([10])
+  const { control } = useFormContext<FormValues>()
+  const {
+    field: { onChange, value },
+  } = useController({ control, name: 'length' })
+
   return (
     <Wrapper {...props}>
       <Info>
         <h2>Character Length</h2>
         <Value>{value}</Value>
       </Info>
-      <SliderRoot value={value} max={20} step={1} onValueChange={setValue} aria-label="Character Length">
+      <SliderRoot
+        value={[value]}
+        onValueChange={(value) => onChange(value[0])}
+        max={20}
+        step={1}
+        aria-label="Character Length"
+      >
         <SliderTrack>
           <SliderRange />
         </SliderTrack>

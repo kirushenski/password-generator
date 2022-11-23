@@ -1,15 +1,36 @@
 import styled from 'styled-components'
 import { NextPage } from 'next'
+import { useForm, FormProvider } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { useState } from 'react'
 import { Password } from '~components/Password'
 import { Form } from '~components/Form'
+import { FormValues, schema } from '~lib/formSchema'
+
+// TODO Write generate password logic
+// TODO Write update strength logic
 
 const HomePage: NextPage = () => {
+  const [password, setPassword] = useState<string>()
+
+  const form = useForm<FormValues>({
+    resolver: yupResolver(schema),
+    defaultValues: { length: 10, settings: [] },
+  })
+
   return (
     <Wrapper>
       <Heading>Password Generator</Heading>
       <Fields>
-        <Password password="PTx1f5DaFX" />
-        <Form />
+        <FormProvider {...form}>
+          <Password password={password} />
+          <Form
+            onSubmit={(values) => {
+              console.log('generate password', values)
+              setPassword('PTx1f5DaFX')
+            }}
+          />
+        </FormProvider>
       </Fields>
     </Wrapper>
   )

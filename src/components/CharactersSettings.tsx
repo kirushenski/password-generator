@@ -2,7 +2,9 @@ import { ComponentPropsWithoutRef } from 'react'
 import styled from 'styled-components'
 import * as Checkbox from '@radix-ui/react-checkbox'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
+import { useFormContext, useController } from 'react-hook-form'
 import IconCheck from '~icons/icon-check.svg'
+import { FormValues } from '~lib/formSchema'
 
 const settings: { value: string; label: string }[] = [
   { value: 'uppercase', label: 'Include Uppercase Letters' },
@@ -14,6 +16,11 @@ const settings: { value: string; label: string }[] = [
 export type CharactersSettingsProps = ComponentPropsWithoutRef<'div'>
 
 export const CharactersSettings = ({ ...props }: CharactersSettingsProps) => {
+  const { control } = useFormContext<FormValues>()
+  const {
+    field: { onChange, value },
+  } = useController({ control, name: 'settings' })
+
   return (
     <div {...props}>
       <VisuallyHidden.Root>
@@ -22,7 +29,19 @@ export const CharactersSettings = ({ ...props }: CharactersSettingsProps) => {
       <Group>
         {settings.map((option) => (
           <Option key={option.value}>
-            <CheckboxRoot name="settings" value={option.value}>
+            <CheckboxRoot
+              value={option.value}
+              checked={value.includes(option.value)}
+              onCheckedChange={(checked) => {
+                let newValue
+                if (checked) {
+                  newValue = [...value, option.value]
+                } else {
+                  newValue = value.filter((v) => v !== option.value)
+                }
+                onChange(newValue)
+              }}
+            >
               <CheckboxIndicator forceMount>
                 <IconCheck />
               </CheckboxIndicator>
