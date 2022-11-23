@@ -39,6 +39,10 @@ const Group = styled.div`
   display: flex;
   flex-direction: column;
   margin-block: -10px;
+
+  @media (max-width: 479px) {
+    margin-block: calc(-1 * var(--spacing-1));
+  }
 `
 
 const Option = styled.label`
@@ -47,6 +51,11 @@ const Option = styled.label`
   gap: var(--spacing-3);
   padding-block: 10px;
   cursor: pointer;
+
+  @media (max-width: 479px) {
+    gap: calc(var(--spacing-base) * 2.5);
+    padding-block: var(--spacing-1);
+  }
 `
 
 const CheckboxRoot = styled(Checkbox.Root)`

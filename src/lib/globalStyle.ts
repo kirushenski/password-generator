@@ -28,6 +28,12 @@ const GlobalStyle = createGlobalStyle`
     --font-heading-m: 700 24px/31px var(--font-family);
     --font-body: 700 18px/23px var(--font-family);
 
+    @media (max-width: 479px) {
+      --font-heading-l: 700 24px/31px var(--font-family);
+      --font-heading-m: 700 18px/23px var(--font-family);
+      --font-body: 700 16px/21px var(--font-family);
+    }
+
     /* Grid */
     --spacing-base: 8px;
     --spacing-1: calc(var(--spacing-base) * 1);
@@ -45,7 +51,6 @@ const GlobalStyle = createGlobalStyle`
     --duration: 300ms;
 
     /* Normalize */
-    --body-font: var(--font-body);
     --body-color: var(--color-grey);
     --body-background: var(--color-black);
     --link-underline-width: 2px;
@@ -87,6 +92,7 @@ const GlobalStyle = createGlobalStyle`
     isolation: isolate;
     display: grid;
     place-items: center;
+    padding: var(--spacing-8) var(--spacing-2);
   }
 
   html {
@@ -97,7 +103,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font: var(--body-font);
+    font: var(--font-body);
     color: var(--body-color);
     background: var(--body-background);
     -webkit-font-smoothing: antialiased;

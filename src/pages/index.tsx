@@ -21,12 +21,20 @@ const Wrapper = styled.main`
   display: flex;
   flex-direction: column;
   gap: var(--spacing-4);
+
+  @media (max-width: 479px) {
+    gap: var(--spacing-2);
+  }
 `
 
 const Fields = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--spacing-3);
+
+  @media (max-width: 479px) {
+    gap: var(--spacing-2);
+  }
 `
 
 const Heading = styled.h1`

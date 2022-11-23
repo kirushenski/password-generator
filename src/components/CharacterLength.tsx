@@ -26,6 +26,10 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--spacing-2);
+
+  @media (max-width: 479px) {
+    gap: var(--spacing-1);
+  }
 `
 
 const Info = styled.div`

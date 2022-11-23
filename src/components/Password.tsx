@@ -50,6 +50,11 @@ const Wrapper = styled.button`
   &:not(:disabled):hover {
     color: var(--color-white);
   }
+
+  @media (max-width: 479px) {
+    height: var(--spacing-8);
+    padding-inline: var(--spacing-2);
+  }
 `
 
 const Value = styled.output<{ isEmpty: boolean }>`
