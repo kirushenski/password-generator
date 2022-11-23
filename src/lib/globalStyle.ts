@@ -63,13 +63,6 @@ const GlobalStyle = createGlobalStyle`
     src: url('fonts/JetBrainsMono-Bold.woff2') format('woff2');
   }
 
-  @font-face {
-    font-style: italic;
-    font-weight: 700;
-    font-family: JetBrainsMono;
-    src: url('fonts/JetBrainsMono-BoldItalic.woff2') format('woff2');
-  }
-
   *, *::before, *::after {
     box-sizing: border-box;
   }

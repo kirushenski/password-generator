@@ -7,7 +7,7 @@ import { PasswordStrength } from '~components/PasswordStrength'
 import { SubmitButton } from '~components/SubmitButton'
 import { FormValues } from '~lib/formSchema'
 
-export type FormProps = ComponentPropsWithoutRef<'form'> & {
+export type FormProps = Omit<ComponentPropsWithoutRef<'form'>, 'onSubmit'> & {
   onSubmit: SubmitHandler<FormValues>
 }
 

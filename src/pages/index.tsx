@@ -6,8 +6,23 @@ import { useState } from 'react'
 import { Password } from '~components/Password'
 import { Form } from '~components/Form'
 import { FormValues, schema } from '~lib/formSchema'
+import { getRandomInteger } from '~lib/getRandomInteger'
 
-// TODO Write generate password logic
+const UPPERCASE = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+const LOWERCASE = 'abcdefghijklmnopqrstuvwxyz'
+const NUMBERS = '1234567890'
+const SYMBOLS = '!@#$%^&*'
+
+// TODO Fix blink on hard page refresh (white screen)
+// TODO Fix blink on page refresh (values)
+// TODO Fix blinks on value change
+// TODO Refactor logic into hooks
+// TODO Don't repeat 479 media
+// TODO Recap RHF usage
+// TODO Check optimization with devtools
+// TODO Check HTML & a11y tests
+// TODO Fix long password field
+// TODO Check crossbrowser support
 
 const HomePage: NextPage = () => {
   const [password, setPassword] = useState<string>()
@@ -27,9 +42,22 @@ const HomePage: NextPage = () => {
         <FormProvider {...form}>
           <Password password={password} />
           <Form
-            onSubmit={(values) => {
-              console.log('generate password', values)
-              setPassword('PTx1f5DaFX')
+            onSubmit={({ length, settings }) => {
+              const isUppercase = settings.includes('uppercase')
+              const isLowercase = settings.includes('lowercase')
+              const isNumbers = settings.includes('numbers')
+              const isSymbols = settings.includes('symbols')
+
+              const alphabet = `${isUppercase ? UPPERCASE : ''}${isLowercase ? LOWERCASE : ''}${
+                isNumbers ? NUMBERS : ''
+              }${isSymbols ? SYMBOLS : ''}`
+
+              const password = Array.from({ length }, () => {
+                const randomIndex = getRandomInteger(0, alphabet.length - 1)
+                return alphabet[randomIndex]
+              }).join('')
+
+              setPassword(password)
             }}
           />
         </FormProvider>
