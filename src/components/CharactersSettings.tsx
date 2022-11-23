@@ -90,6 +90,10 @@ const CheckboxRoot = styled(Checkbox.Root)`
     border-color: transparent;
     background-color: var(--color-green);
   }
+
+  &:hover {
+    border-color: var(--color-green);
+  }
 `
 
 const CheckboxIndicator = styled(Checkbox.Indicator)`

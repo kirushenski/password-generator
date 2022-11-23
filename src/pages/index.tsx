@@ -8,14 +8,16 @@ import { Form } from '~components/Form'
 import { FormValues, schema } from '~lib/formSchema'
 
 // TODO Write generate password logic
-// TODO Write update strength logic
 
 const HomePage: NextPage = () => {
   const [password, setPassword] = useState<string>()
 
   const form = useForm<FormValues>({
     resolver: yupResolver(schema),
-    defaultValues: { length: 10, settings: [] },
+    defaultValues: {
+      length: 10,
+      settings: ['uppercase', 'lowercase', 'numbers'],
+    },
   })
 
   return (

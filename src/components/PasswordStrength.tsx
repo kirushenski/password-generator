@@ -17,8 +17,29 @@ export type PasswordStrengthProps = ComponentPropsWithoutRef<'div'>
 export const PasswordStrength = ({ ...props }: PasswordStrengthProps) => {
   const { length, settings } = useWatch<FormValues>()
   const strength = useMemo<PasswordStrength>(() => {
-    console.log('update strength', length, settings)
-    return 'strong'
+    if (!length || !settings) return 'weakest'
+
+    if (
+      (settings.length === 4 && length >= 10) ||
+      (settings.length === 3 && length >= 12) ||
+      (settings.length === 2 && length >= 14) ||
+      (settings.length === 1 && length >= 16)
+    ) {
+      return 'strong'
+    }
+
+    if (
+      ((settings.length === 4 || settings.length === 3) && length >= 8) ||
+      ((settings.length === 2 || settings.length === 1) && length >= 10)
+    ) {
+      return 'medium'
+    }
+
+    if (length >= 6) {
+      return 'weak'
+    }
+
+    return 'weakest'
   }, [length, settings])
 
   const { label, color, count } = passwordStrengthMap[strength]
