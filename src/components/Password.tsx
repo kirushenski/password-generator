@@ -45,6 +45,7 @@ const Wrapper = styled.button`
   padding-inline: var(--spacing-4);
   background-color: var(--color-dark-grey);
   color: var(--color-green);
+  transition: color var(--duration);
 
   &:not(:disabled):hover {
     color: var(--color-white);

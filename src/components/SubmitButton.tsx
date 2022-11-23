@@ -23,6 +23,7 @@ const Wrapper = styled.button`
   background-color: var(--color-green);
   color: var(--color-dark-grey);
   text-transform: uppercase;
+  transition: border-color var(--duration), color var(--duration), background-color var(--duration);
 
   &:hover {
     border-color: var(--color-green);

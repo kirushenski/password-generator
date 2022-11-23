@@ -70,6 +70,7 @@ const SliderThumb = styled(Slider.Thumb)`
   border: 2px solid transparent;
   border-radius: 50%;
   cursor: move;
+  transition: border-color var(--duration), background-color var(--duration);
 
   &:hover {
     border-color: var(--color-green);

@@ -23,7 +23,7 @@ export const CharactersSettings = ({ ...props }: CharactersSettingsProps) => {
         {settings.map((option) => (
           <Option key={option.value}>
             <CheckboxRoot name="settings" value={option.value}>
-              <CheckboxIndicator>
+              <CheckboxIndicator forceMount>
                 <IconCheck />
               </CheckboxIndicator>
             </CheckboxRoot>
@@ -56,6 +56,7 @@ const CheckboxRoot = styled(Checkbox.Root)`
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: border-color var(--duration), background-color var(--duration);
 
   &[data-state='checked'] {
     border-color: transparent;
@@ -63,4 +64,11 @@ const CheckboxRoot = styled(Checkbox.Root)`
   }
 `
 
-const CheckboxIndicator = styled(Checkbox.Indicator)``
+const CheckboxIndicator = styled(Checkbox.Indicator)`
+  opacity: 0;
+  transition: opacity var(--duration);
+
+  &[data-state='checked'] {
+    opacity: 1;
+  }
+`

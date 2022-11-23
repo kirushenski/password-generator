@@ -64,4 +64,5 @@ const Box = styled.div<{ color?: string }>`
   height: 28px;
   border: 2px solid ${({ color }) => (color ? 'transparent' : 'var(--color-white)')};
   background-color: ${({ color }) => color};
+  transition: border-color var(--duration), background-color var(--duration);
 `

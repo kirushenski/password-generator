@@ -42,7 +42,7 @@ const GlobalStyle = createGlobalStyle`
     --spacing-10: calc(var(--spacing-base) * 10);
 
     /* Animation */
-    --duration: 150ms;
+    --duration: 300ms;
 
     /* Normalize */
     --body-font: var(--font-body);
