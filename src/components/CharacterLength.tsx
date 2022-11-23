@@ -73,6 +73,6 @@ const SliderThumb = styled(Slider.Thumb)`
 
   &:hover {
     border-color: var(--color-green);
-    background-color: var(--color-white);
+    background-color: var(--color-black);
   }
 `

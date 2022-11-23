@@ -8,7 +8,7 @@ const HomePage: NextPage = () => {
     <Wrapper>
       <Heading>Password Generator</Heading>
       <Fields>
-        <Password />
+        <Password password="PTx1f5DaFX" />
         <Form />
       </Fields>
     </Wrapper>

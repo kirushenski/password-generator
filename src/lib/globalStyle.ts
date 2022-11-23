@@ -49,7 +49,6 @@ const GlobalStyle = createGlobalStyle`
     --body-color: var(--color-grey);
     --body-background: var(--color-black);
     --link-underline-width: 2px;
-    --disabled-opacity: 0.3;
     --focus-ring-width: 3px;
   }
 
@@ -134,7 +133,6 @@ const GlobalStyle = createGlobalStyle`
   }
 
   :disabled {
-    opacity: var(--disabled-opacity);
     cursor: not-allowed;
   }
 

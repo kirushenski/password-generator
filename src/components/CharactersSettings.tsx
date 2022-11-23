@@ -38,13 +38,14 @@ export const CharactersSettings = ({ ...props }: CharactersSettingsProps) => {
 const Group = styled.div`
   display: flex;
   flex-direction: column;
-  gap: calc(var(--spacing-base) * 2.5);
+  margin-block: -10px;
 `
 
 const Option = styled.label`
   display: flex;
   align-items: center;
   gap: var(--spacing-3);
+  padding-block: 10px;
   cursor: pointer;
 `
 

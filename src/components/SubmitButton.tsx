@@ -19,7 +19,14 @@ const Wrapper = styled.button`
   justify-content: center;
   align-items: center;
   gap: var(--spacing-3);
+  border: 2px solid transparent;
   background-color: var(--color-green);
   color: var(--color-dark-grey);
   text-transform: uppercase;
+
+  &:hover {
+    border-color: var(--color-green);
+    color: var(--color-green);
+    background-color: transparent;
+  }
 `
