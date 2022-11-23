@@ -139,8 +139,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   :focus {
-    outline: var(--focus-ring-width) solid var(--color-primary);
-    outline-offset: calc(-1 * var(--focus-ring-width));
+    outline: var(--focus-ring-width) solid var(--color-white);
+    outline-offset: var(--focus-ring-width);
   }
 
   .js-focus-visible :focus:not(.focus-visible), input:focus, textarea:focus {
