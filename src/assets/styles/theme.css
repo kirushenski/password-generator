@@ -1,0 +1,26 @@
+:root {
+  /* HSL */
+  --hsl-black: 0 0% 0%;
+  --hsl-white: 0 0% 100%;
+
+  /* Colors */
+  --color-black: hsl(var(--hsl-black));
+  --color-white: hsl(var(--hsl-white));
+
+  /* Grid */
+  --spacing-base: 8px;
+  --spacing-1: calc(var(--spacing-base) * 1);
+  --spacing-2: calc(var(--spacing-base) * 2);
+  --spacing-3: calc(var(--spacing-base) * 3);
+  --spacing-4: calc(var(--spacing-base) * 4);
+  --spacing-5: calc(var(--spacing-base) * 5);
+  --spacing-6: calc(var(--spacing-base) * 6);
+  --spacing-7: calc(var(--spacing-base) * 7);
+  --spacing-8: calc(var(--spacing-base) * 8);
+  --spacing-9: calc(var(--spacing-base) * 9);
+  --spacing-10: calc(var(--spacing-base) * 10);
+
+  /* Animation */
+  --duration: 150ms;
+  --easing: ease;
+}
