@@ -12,7 +12,7 @@ export const Form = ({ ...props }: FormProps) => {
     <Wrapper {...props}>
       <CharacterLength />
       <CharactersSettings />
-      <PasswordStrength />
+      <PasswordStrength strength="strong" />
       <SubmitButton />
     </Wrapper>
   )
