@@ -1,19 +1,15 @@
 import Head from 'next/head'
-import { AppPropsWithLayout } from '~types/index'
 import 'focus-visible'
-import 'modern-normalize/modern-normalize.css'
-import '~styles/theme.css'
-import '~styles/helpers.css'
-import '~styles/global.css'
+import { AppProps } from 'next/app'
+import GlobalStyle from '~lib/globalStyle'
 
-const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
-  const getLayout = Component.getLayout ?? ((page) => page)
-
-  return getLayout(
+const MyApp = ({ Component, pageProps }: AppProps) => {
+  return (
     <>
+      <GlobalStyle />
       <Head>
-        <title>Next Starter</title>
-        <meta name="description" content="Opinionated setup of Next.js-based project" />
+        <title>Password generator</title>
+        <meta name="description" content="Generate your password like there is no tomorrow!" />
       </Head>
       <Component {...pageProps} />
     </>
