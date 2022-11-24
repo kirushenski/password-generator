@@ -1,12 +1,13 @@
 import { ComponentPropsWithoutRef } from 'react'
 import styled from 'styled-components'
 import { useFormContext } from 'react-hook-form'
+import { FormValues } from './PasswordGenerator.hooks'
 import IconArrowRight from '~icons/icon-arrow-right.svg'
-import { FormValues } from '~lib/formSchema'
+import { queries } from '~lib/mediaQueries'
 
 export type SubmitButtonProps = ComponentPropsWithoutRef<'button'>
 
-export const SubmitButton = ({ ...props }: SubmitButtonProps) => {
+export const SubmitButton = (props: SubmitButtonProps) => {
   const {
     formState: { isValid },
   } = useFormContext<FormValues>()
@@ -32,7 +33,19 @@ const Wrapper = styled.button`
   transition: border-color var(--duration), color var(--duration), background-color var(--duration),
     opacity var(--duration);
 
-  &:not(:disabled):hover {
+  @media ${queries.mobile} {
+    height: var(--spacing-7);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:not(:disabled):hover {
+      border-color: var(--color-green);
+      color: var(--color-green);
+      background-color: transparent;
+    }
+  }
+
+  &:active {
     border-color: var(--color-green);
     color: var(--color-green);
     background-color: transparent;

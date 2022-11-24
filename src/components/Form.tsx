@@ -1,11 +1,12 @@
 import { ComponentPropsWithoutRef } from 'react'
 import styled from 'styled-components'
 import { useFormContext, SubmitHandler } from 'react-hook-form'
+import { FormValues } from './PasswordGenerator.hooks'
 import { CharacterLength } from '~components/CharacterLength'
 import { CharactersSettings } from '~components/CharactersSettings'
 import { PasswordStrength } from '~components/PasswordStrength'
 import { SubmitButton } from '~components/SubmitButton'
-import { FormValues } from '~lib/formSchema'
+import { queries } from '~lib/mediaQueries'
 
 export type FormProps = Omit<ComponentPropsWithoutRef<'form'>, 'onSubmit'> & {
   onSubmit: SubmitHandler<FormValues>
@@ -34,7 +35,7 @@ const Wrapper = styled.form`
   background-color: var(--color-dark-grey);
   color: var(--color-white);
 
-  @media (max-width: 479px) {
+  @media ${queries.mobile} {
     padding: var(--spacing-2);
   }
 `
@@ -44,7 +45,7 @@ const Group = styled.div`
   flex-direction: column;
   gap: var(--spacing-4);
 
-  @media (max-width: 479px) {
+  @media ${queries.mobile} {
     gap: var(--spacing-2);
   }
 `

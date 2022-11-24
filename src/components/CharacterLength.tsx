@@ -2,11 +2,14 @@ import { ComponentPropsWithoutRef } from 'react'
 import styled from 'styled-components'
 import * as Slider from '@radix-ui/react-slider'
 import { useFormContext, useController } from 'react-hook-form'
-import { FormValues } from '~lib/formSchema'
+import { FormValues } from './PasswordGenerator.hooks'
+import { queries } from '~lib/mediaQueries'
 
 export type CharacterLengthProps = ComponentPropsWithoutRef<'div'>
 
-export const CharacterLength = ({ ...props }: CharacterLengthProps) => {
+const LABEL_TEXT = 'Character Length'
+
+export const CharacterLength = (props: CharacterLengthProps) => {
   const { control } = useFormContext<FormValues>()
   const {
     field: { onChange, value },
@@ -15,20 +18,14 @@ export const CharacterLength = ({ ...props }: CharacterLengthProps) => {
   return (
     <Wrapper {...props}>
       <Info>
-        <h2>Character Length</h2>
+        <h2>{LABEL_TEXT}</h2>
         <Value>{value}</Value>
       </Info>
-      <SliderRoot
-        value={[value]}
-        onValueChange={(value) => onChange(value[0])}
-        max={20}
-        step={1}
-        aria-label="Character Length"
-      >
+      <SliderRoot value={[value]} onValueChange={(value) => onChange(value[0])} max={20} step={1}>
         <SliderTrack>
           <SliderRange />
         </SliderTrack>
-        <SliderThumb />
+        <SliderThumb aria-label={LABEL_TEXT} />
       </SliderRoot>
     </Wrapper>
   )
@@ -39,7 +36,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   gap: var(--spacing-2);
 
-  @media (max-width: 479px) {
+  @media ${queries.mobile} {
     gap: var(--spacing-1);
   }
 `
@@ -54,6 +51,10 @@ const Info = styled.div`
 const Value = styled.output`
   font: var(--font-heading-l);
   color: var(--color-green);
+
+  @media ${queries.mobile} {
+    font: var(--font-heading-m);
+  }
 `
 
 const SliderRoot = styled(Slider.Root)`
@@ -88,7 +89,14 @@ const SliderThumb = styled(Slider.Thumb)`
   cursor: move;
   transition: border-color var(--duration), background-color var(--duration);
 
-  &:hover {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      border-color: var(--color-green);
+      background-color: var(--color-black);
+    }
+  }
+
+  &:active {
     border-color: var(--color-green);
     background-color: var(--color-black);
   }

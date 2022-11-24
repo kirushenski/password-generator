@@ -3,8 +3,9 @@ import styled from 'styled-components'
 import * as Checkbox from '@radix-ui/react-checkbox'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
 import { useFormContext, useController } from 'react-hook-form'
+import { FormValues } from './PasswordGenerator.hooks'
 import IconCheck from '~icons/icon-check.svg'
-import { FormValues } from '~lib/formSchema'
+import { queries } from '~lib/mediaQueries'
 
 const settings: { value: string; label: string }[] = [
   { value: 'uppercase', label: 'Include Uppercase Letters' },
@@ -15,7 +16,7 @@ const settings: { value: string; label: string }[] = [
 
 export type CharactersSettingsProps = ComponentPropsWithoutRef<'div'>
 
-export const CharactersSettings = ({ ...props }: CharactersSettingsProps) => {
+export const CharactersSettings = (props: CharactersSettingsProps) => {
   const { control } = useFormContext<FormValues>()
   const {
     field: { onChange, value },
@@ -23,13 +24,15 @@ export const CharactersSettings = ({ ...props }: CharactersSettingsProps) => {
 
   return (
     <div {...props}>
-      <VisuallyHidden.Root>
-        <h2>Characters settings</h2>
-      </VisuallyHidden.Root>
+      <h2>
+        <VisuallyHidden.Root>Characters settings</VisuallyHidden.Root>
+      </h2>
       <Group>
         {settings.map((option) => (
-          <Option key={option.value}>
+          <Option key={option.value} htmlFor={`settings-${option.value}`}>
             <CheckboxRoot
+              id={`settings-${option.value}`}
+              aria-label={option.label}
               value={option.value}
               checked={value.includes(option.value)}
               onCheckedChange={(checked) => {
@@ -46,7 +49,7 @@ export const CharactersSettings = ({ ...props }: CharactersSettingsProps) => {
                 <IconCheck />
               </CheckboxIndicator>
             </CheckboxRoot>
-            <div>{option.label}</div>
+            <span>{option.label}</span>
           </Option>
         ))}
       </Group>
@@ -59,7 +62,7 @@ const Group = styled.div`
   flex-direction: column;
   margin-block: -10px;
 
-  @media (max-width: 479px) {
+  @media ${queries.mobile} {
     margin-block: calc(-1 * var(--spacing-1));
   }
 `
@@ -71,7 +74,7 @@ const Option = styled.label`
   padding-block: 10px;
   cursor: pointer;
 
-  @media (max-width: 479px) {
+  @media ${queries.mobile} {
     gap: calc(var(--spacing-base) * 2.5);
     padding-block: var(--spacing-1);
   }
@@ -91,7 +94,13 @@ const CheckboxRoot = styled(Checkbox.Root)`
     background-color: var(--color-green);
   }
 
-  &:hover {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      border-color: var(--color-green);
+    }
+  }
+
+  &:active {
     border-color: var(--color-green);
   }
 `

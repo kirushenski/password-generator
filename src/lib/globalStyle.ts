@@ -1,11 +1,12 @@
 import { createGlobalStyle } from 'styled-components'
+import { queries } from './mediaQueries'
 
 const GlobalStyle = createGlobalStyle`
   :root {
     /* HSL */
     --hsl-black: 248 15% 11%;
     --hsl-white: 252 11% 91%;
-    --hsl-grey: 251 9% 53%;
+    --hsl-grey: 251 10% 55%;
     --hsl-dark-grey: 248 10% 15%;
     --hsl-green: 127 100% 82%;
     --hsl-red: 0 91% 63%;
@@ -21,18 +22,6 @@ const GlobalStyle = createGlobalStyle`
     --color-red: hsl(var(--hsl-red));
     --color-orange: hsl(var(--hsl-orange));
     --color-yellow: hsl(var(--hsl-yellow));
-
-    /* Fonts */
-    --font-family: JetBrainsMono, -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
-    --font-heading-l: 700 32px/43px var(--font-family);
-    --font-heading-m: 700 24px/31px var(--font-family);
-    --font-body: 700 18px/23px var(--font-family);
-
-    @media (max-width: 479px) {
-      --font-heading-l: 700 24px/31px var(--font-family);
-      --font-heading-m: 700 18px/23px var(--font-family);
-      --font-body: 700 16px/21px var(--font-family);
-    }
 
     /* Grid */
     --spacing-base: 8px;
@@ -57,12 +46,6 @@ const GlobalStyle = createGlobalStyle`
     --focus-ring-width: 3px;
   }
 
-  @font-face {
-    font-weight: 700;
-    font-family: JetBrainsMono;
-    src: url('fonts/JetBrainsMono-Bold.woff2') format('woff2');
-  }
-
   *, *::before, *::after {
     box-sizing: border-box;
   }
@@ -85,7 +68,8 @@ const GlobalStyle = createGlobalStyle`
     isolation: isolate;
     display: grid;
     place-items: center;
-    padding: var(--spacing-8) var(--spacing-2);
+    min-width: 375px;
+    padding: var(--spacing-2);
   }
 
   html {
@@ -96,10 +80,19 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
+    --font-heading-l: 700 32px/43px var(--font-base);
+    --font-heading-m: 700 24px/31px var(--font-base);
+    --font-body: 700 18px/23px var(--font-base);
+    --font-body-s: 700 16px/21px var(--font-base);
+
     font: var(--font-body);
     color: var(--body-color);
     background: var(--body-background);
     -webkit-font-smoothing: antialiased;
+
+    @media ${queries.mobile} {
+      font: var(--font-body-s);
+    }
   }
 
   input, textarea, select {
