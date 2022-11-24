@@ -29,9 +29,8 @@ export const CharactersSettings = (props: CharactersSettingsProps) => {
       </h2>
       <Group>
         {settings.map((option) => (
-          <Option key={option.value} htmlFor={`settings-${option.value}`}>
+          <Option key={option.value}>
             <CheckboxRoot
-              id={`settings-${option.value}`}
               aria-label={option.label}
               value={option.value}
               checked={value.includes(option.value)}
@@ -98,6 +97,10 @@ const CheckboxRoot = styled(Checkbox.Root)`
     &:hover {
       border-color: var(--color-green);
     }
+  }
+
+  &:active {
+    border-color: var(--color-green);
   }
 `
 

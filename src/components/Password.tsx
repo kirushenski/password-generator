@@ -47,7 +47,8 @@ const Wrapper = styled.button`
 
 const Value = styled.output<{ isEmpty: boolean }>`
   white-space: nowrap;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
   font: var(--font-heading-l);
   color: ${({ isEmpty }) => (isEmpty ? 'var(--color-grey)' : 'var(--color-white)')};
 

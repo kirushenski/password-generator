@@ -9,7 +9,7 @@ const JetBrainsMonoBold = localFont({
   weight: '700',
 })
 
-const App = ({ Component, pageProps }: AppProps) => {
+const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <style jsx global>{`
@@ -21,6 +21,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       <Head>
         <title>Password generator</title>
         <meta name="description" content="Generate your password like there is no tomorrow!" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="theme-color" content="#18171f" />
       </Head>
       <Component {...pageProps} />
@@ -28,4 +29,4 @@ const App = ({ Component, pageProps }: AppProps) => {
   )
 }
 
-export default App
+export default MyApp

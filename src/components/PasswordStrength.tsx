@@ -18,7 +18,7 @@ export const PasswordStrength = (props: PasswordStrengthProps) => {
         <span>{label}</span>
         <Boxes>
           {[...Array(4).keys()].map((value) => (
-            <Box key={value} color={value < count ? color : undefined} />
+            <Box key={value} boxColor={value < count ? color : undefined} />
           ))}
         </Boxes>
       </Output>
@@ -62,10 +62,10 @@ const Boxes = styled.span`
   gap: var(--spacing-1);
 `
 
-const Box = styled.span<{ color?: string }>`
+const Box = styled.span<{ boxColor?: string }>`
   width: 10px;
   height: 28px;
-  border: 2px solid ${({ color }) => (color ? 'transparent' : 'var(--color-white)')};
-  background-color: ${({ color }) => color};
+  border: 2px solid ${({ boxColor }) => (boxColor ? 'transparent' : 'var(--color-white)')};
+  background-color: ${({ boxColor }) => boxColor};
   transition: border-color var(--duration), background-color var(--duration);
 `

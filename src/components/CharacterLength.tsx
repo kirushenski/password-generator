@@ -88,7 +88,7 @@ const SliderThumb = styled(Slider.Thumb)`
   background-color: var(--color-white);
   border: 2px solid transparent;
   border-radius: 50%;
-  cursor: move;
+  cursor: ew-resize;
   transition: border-color var(--duration), background-color var(--duration);
 
   @media (hover: hover) and (pointer: fine) {
