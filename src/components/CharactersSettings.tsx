@@ -99,10 +99,6 @@ const CheckboxRoot = styled(Checkbox.Root)`
       border-color: var(--color-green);
     }
   }
-
-  &:active {
-    border-color: var(--color-green);
-  }
 `
 
 const CheckboxIndicator = styled(Checkbox.Indicator)`

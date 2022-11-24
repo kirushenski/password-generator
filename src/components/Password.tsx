@@ -39,10 +39,6 @@ const Wrapper = styled.button`
     }
   }
 
-  &:active {
-    color: var(--color-white);
-  }
-
   @media ${queries.mobile} {
     height: var(--spacing-8);
     padding-inline: var(--spacing-2);

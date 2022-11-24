@@ -45,12 +45,6 @@ const Wrapper = styled.button`
     }
   }
 
-  &:active {
-    border-color: var(--color-green);
-    color: var(--color-green);
-    background-color: transparent;
-  }
-
   &:disabled {
     opacity: 0.3;
   }

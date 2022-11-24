@@ -71,12 +71,14 @@ const SliderTrack = styled(Slider.Track)`
   flex-grow: 1;
   height: var(--spacing-1);
   background-color: var(--color-black);
+  border-radius: 4px;
 `
 
 const SliderRange = styled(Slider.Range)`
   position: absolute;
   background-color: var(--color-green);
   height: 100%;
+  border-radius: inherit;
 `
 
 const SliderThumb = styled(Slider.Thumb)`
@@ -94,10 +96,5 @@ const SliderThumb = styled(Slider.Thumb)`
       border-color: var(--color-green);
       background-color: var(--color-black);
     }
-  }
-
-  &:active {
-    border-color: var(--color-green);
-    background-color: var(--color-black);
   }
 `
